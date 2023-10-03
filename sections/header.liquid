@@ -1,0 +1,50 @@
+<div>
+    <h1>{{ section.settings.site_logo_title }}</h1>
+</div>
+<div>
+    <ul>
+        {% assign menue = linklists[section.settings.header_menu].links %}
+        {% for link in menue %}
+            {% if link.links != blank %}
+                <li>
+                    {{ link.title }}
+                    <ul>
+                        {% for childlink in link.links %}
+                            <li><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% else %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% if shop.customer_accounts_enabled == true %}
+        <ul>
+            <li><a href="{{ routes.cart_url }}">Cart</a></li>
+            <li><a href="{{ routes.account_login_url }}">Login</a></li>
+            <li><a href="{{ routes.account_register_url }}">Register</a></li>
+        </ul>
+    {% endif %}
+</div>
+
+{% schema %}
+    {
+        "name": "Header",
+        "settings": [
+            {
+                "type": "text",
+                "id": "site_logo_title",
+                "label": "Title",
+                "default": "Text",
+                "info": "This is for the site logo text"
+            },
+            {
+                "type": "link_list",
+                "id": "header_menu",
+                "label": "Header Menu",
+                "default": "main-menu"
+            }
+        ]
+    }
+{% endschema %}
