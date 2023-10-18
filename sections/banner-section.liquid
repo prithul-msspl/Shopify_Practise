@@ -1,0 +1,54 @@
+{% assign banner_heading = section.settings.banner_heading %}
+{% assign banner_subheading = section.settings.banner_subheading %}
+{% assign banner_image = section.settings.banner_image %}
+{% assign shop_url = section.settings.shop_url %}
+{% assign shop_label = section.settings.shop_label %}
+<div>
+    {% if banner_heading != blank %}
+        <h1>{{ banner_heading }}</h1>
+    {% endif %}
+    {% if banner_subheading != blank %}
+        <p>{{ banner_subheading }}</p>
+    {% endif %}
+    {% if banner_image != blank %}
+        <img src="{{ banner_image | img_url:"master" }}">
+    {% endif %}
+    {% if shop_url != blank %}
+        {% if shop_label != blank %}
+            <a href="{{ shop_url }}">{{ shop_label }}</a>
+        {% endif %}
+    {% endif %}
+</div>
+{% schema %}
+{
+    "settings": [
+        {
+            "type": "text",
+            "id": "banner_heading",
+            "label": "Banner Heading"
+        },
+        {
+            "type": "text",
+            "id": "banner_subheading",
+            "label": "Banner Sub-heading"
+        },
+        {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Banner Image"
+        },
+        {
+            "type": "url",
+            "id": "shop_url",
+            "label": "Banner Url"
+        },
+        {
+            "type": "text",
+            "id": "shop_label",
+            "label": "Banner Button Label"
+        }
+
+    ]
+
+}
+{% endschema %}

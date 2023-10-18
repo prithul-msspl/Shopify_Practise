@@ -1,0 +1,34 @@
+<div>
+    {% if section.settings.enable_author %}
+        <p><b>Published By: </b>{{ article.author }}</p>
+    {% endif %}
+    {% if section.settings.enable_published_date %}
+        <p><b>Published On: </b>{{ article.published_at | date: '%d-%m-%Y' }}</p>
+    {% endif %}
+</div>
+<div>
+    <h1>{{ article.title }}</h1>
+    <div>{{ article.content }}</div>
+    <div> <img src="{{ article.image | img_url: "large"}}" alt=""> </div>
+</div>
+
+{% schema %}
+{
+    "name": "Template Article",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "enable_author",
+            "default": true,
+            "label": "Display Author Name"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_published_date",
+            "default": true,
+            "label": "Display Published Date"
+        }
+    ],
+    
+}
+{% endschema %}

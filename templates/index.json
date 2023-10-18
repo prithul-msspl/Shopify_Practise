@@ -1,0 +1,11 @@
+{
+    "sections": {
+        "banner-section": {
+            "type": "banner-section"
+        },
+        "second-section": {
+            "type": "template-second-section"
+        }
+    },
+    "order": ["banner-section", "second-section"]
+}
