@@ -4,7 +4,16 @@
             "type": "banner-section"
         },
         "second-section": {
-            "type": "template-second-section"
+            "type": "template-second-section",
+            "blocks": {
+                "section_icon": {
+                    "type": "section_icon"
+                },
+                "section_text": {
+                    "type": "section_text"
+                }
+            },
+            "block_order": ["section_icon", "section_text"]
         }
     },
     "order": ["banner-section", "second-section"]
