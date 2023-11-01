@@ -2,6 +2,9 @@
     {% if pagination.previous %}
         <a href="{{ pagination.previous.url }}">{{ pagination.previous.title }}</a>
     {% endif %}
+    {% for part in pagination.parts %}
+        <a href="{{ part.url }}">{{ part.title }}</a>
+    {% endfor %}
     {% if pagination.next %}
         <a href="{{ pagination.next.url }}">{{ pagination.next.title }}</a>
     {% endif %}
