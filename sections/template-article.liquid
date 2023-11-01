@@ -11,6 +11,48 @@
     <div>{{ article.content }}</div>
     <div> <img src="{{ article.image | img_url: "large"}}" alt=""> </div>
 </div>
+{%  if blog.comments_enabled? %}  
+    {% if article.comments_count > 0 %}
+        <div>
+            <h1>See what people are saying</h1>
+            {% for comment in article.comments %}
+                <div>
+                    <b>{{ comment.author }}</b>
+                    <p>{{ comment.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        No comments present in this post
+    {% endif %}
+
+    <div>
+        {% if form.errors %} 
+            There are some errors found
+        {% elsif form.posted_succesfully? %}
+            Your comment is successfully
+        {% endif %}
+    </div>
+    <div>
+        {%  form 'new_comment', article %}
+            <div> 
+                <label for="comment_name">Name</label>
+                <input type="text" name="comment[author]" id="comment_name" required>
+            </div>
+            <div>
+                <label for="comment_email">Email</label>
+                <input type="email" name="comment[email]" id="comment_email" required>
+            </div>
+            <div>
+                <label for="comment_body">Comment</label>
+                <textarea name="comment[body]" id="comment_body" cols="30" rows="10" required></textarea>
+            </div>
+            <div>
+                <input type="submit" value="Post Comment">
+            </div>
+        {% endform %}
+    </div>
+{% endif %}
 
 {% schema %}
 {

@@ -1,0 +1,19 @@
+{% paginate blog.articles by 1 %}
+    {% for article in blog.articles %}
+        <div>
+            {% if article.image %}
+                <img src="{{ article.image | img_url: 'master' }}" alt="{{ article.image.alt }}">
+            {% else %}
+                {{ 'image' | placeholder_svg_tag }}
+            {% endif %}
+            {{ article.title }}
+            {% if article.excerpt.size > 0 %}
+                <p>{{ article.excerpt | strip_html | truncatewords: 15 }}</p>
+            {% else %}
+                <p>{{ article.content | strip_html | truncatewords: 15 }}</p>
+            {% endif %}
+            <a href="{{ article.url }}">Read More</a>
+        </div>
+    {% endfor %}
+    {% render 'pagination', pagination: paginate %}
+{% endpaginate %}
