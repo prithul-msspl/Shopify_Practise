@@ -1,0 +1,11 @@
+{% paginate collection.products by 1 %}
+    {% for product in collection.products %}
+        <div>
+            {% if product.featured_image %}
+                <img src="{{ product.featured_image | img_url: "master" }}" alt="{{ product.featured_image.alt }}">
+            {% endif %}
+            <a href="{{ product.url }}"><h2>{{ product.title }}</h2></a>
+        </div>
+    {% endfor %}
+    {% render 'pagination', pagination: paginate %}
+{% endpaginate %}
