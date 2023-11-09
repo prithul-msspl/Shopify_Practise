@@ -1,54 +1,52 @@
-{% assign banner_heading = section.settings.banner_heading %}
-{% assign banner_subheading = section.settings.banner_subheading %}
-{% assign banner_image = section.settings.banner_image %}
-{% assign shop_url = section.settings.shop_url %}
-{% assign shop_label = section.settings.shop_label %}
+{% if section.blocks != blank %}
 <div>
-    {% if banner_heading != blank %}
-        <h1>{{ banner_heading }}</h1>
-    {% endif %}
-    {% if banner_subheading != blank %}
-        <p>{{ banner_subheading }}</p>
-    {% endif %}
-    {% if banner_image != blank %}
-        <img src="{{ banner_image | img_url:"master" }}">
-    {% endif %}
-    {% if shop_url != blank %}
-        {% if shop_label != blank %}
-            <a href="{{ shop_url }}">{{ shop_label }}</a>
-        {% endif %}
-    {% endif %}
+    {% for slider in section.blocks %}
+        {% assign image = slider.settings.image %}
+        {% assign slider_text = slider.settings.slider_text %}
+        {% assign shop_now_link = slider.settings.shop_now_link %}
+        <div>
+            {% if image != blank %}
+                <figure>{{ image | img_url: 'master' | img_tag }}</figure>
+            {% endif %}
+
+            {% if slider_text != blank %}
+                <div>
+                    {{ slider_text }}
+                </div>
+            {% endif %}
+
+            {% if shop_now_link != blank %}
+                <a href="{{ shop_now_link.url }}">Shop Now</a>
+            {% endif %}
+        </div>
+    {% endfor %}
 </div>
+{% endif %}
 {% schema %}
 {
-    "settings": [
+    "max_blocks": 3,
+    "blocks":[
         {
-            "type": "text",
-            "id": "banner_heading",
-            "label": "Banner Heading"
-        },
-        {
-            "type": "text",
-            "id": "banner_subheading",
-            "label": "Banner Sub-heading"
-        },
-        {
-            "type": "image_picker",
-            "id": "banner_image",
-            "label": "Banner Image"
-        },
-        {
-            "type": "url",
-            "id": "shop_url",
-            "label": "Banner Url"
-        },
-        {
-            "type": "text",
-            "id": "shop_label",
-            "label": "Banner Button Label"
+            "name": "Slider",
+            "type": "slides",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "richtext",
+                    "id": "slider_text",
+                    "label": "Slider Text"
+                },
+                {
+                    "type": "url",
+                    "id": "shop_now_link",
+                    "label": "Button Link"
+                }
+            ]
         }
-
     ]
-
 }
 {% endschema %}
