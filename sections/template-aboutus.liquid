@@ -1,0 +1,59 @@
+{%  assign section_image = section.settings.section_image %}
+{%  assign heading = section.settings.heading %}
+{%  assign sub_heading = section.settings.sub_heading %}
+{%  assign section_description = section.settings.section_description %}
+{%  assign read_more_url = section.settings.read_more_url %}
+<div>
+    {% if section_image != blank %}
+        <div>
+            {{ section_image |  img_url: "master" |  img_tag }}
+        </div>
+    {% endif %}
+    <div>
+        {% if heading != blank %}
+            {{ heading }}
+        {% endif %}
+        {% if sub_heading != blank %}
+            {{ sub_heading }}
+        {% endif %}
+        {% if section_description != blank %}
+            {{ section_description }}
+        {% endif %}
+        {% if read_more_url != blank %}
+            <a href="{{ read_more_url }}">Read More</a>
+        {% endif %}
+    </div>
+
+</div>
+{% schema %}
+{
+    "name": "About Us Section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "section_image",
+            "label": "Section Image"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+        },
+        {
+            "type": "text",
+            "id": "sub_heading",
+            "label": "Sub Heading"
+        },
+        {
+            "type": "richtext",
+            "id": "section_description",
+            "label": "Section Description"
+        },
+        {
+            "type": "url",
+            "id": "read_more_url",
+            "label": "Read More Url"
+        }
+    ]
+}
+{% endschema %}

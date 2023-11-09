@@ -1,0 +1,45 @@
+{% assign section_heading = section.settings.section_heading %}
+{% assign all_product_url = section.settings.all_product_url %}
+{% assign product_list = section.settings.product_list %}
+<div>
+    <div>
+        {% if section_heading != blank %}
+            <h2>{{ section_heading }}</h2>
+        {% endif %}
+        {% if all_product_url != blank %}
+            <a href="{{ all_product_url }}">View all products</a>
+        {% endif %}
+        {% if product_list != blank %}
+            <div>
+                {% for item in product_list %}
+                    {% render 'product', product:item %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+{% schema %}
+{
+    "name": "Latest Arrival",
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_heading",
+            "label": "Heading"
+        },
+        {
+            "type": "url",
+            "id": "all_product_url",
+            "label": "View all product url"
+        },
+        {
+            "type": "product_list",
+            "id": "product_list",
+            "label": "Select Products",
+            "limit": 3
+        }
+    ]
+    
+}
+{% endschema %}

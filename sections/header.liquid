@@ -1,10 +1,11 @@
 <div>
-    <h1>{{ section.settings.site_logo_title }}</h1>
+    {{ section.settings.site_logo |  img_tag }}
 </div>
 <div>
+    {% assign navmenu = linklists[section.settings.header_menu].links %}
+    {% if navmenu != blank %}
     <ul>
-        {% assign menue = linklists[section.settings.header_menu].links %}
-        {% for link in menue %}
+        {% for link in navmenu %}
             {% if link.links != blank %}
                 <li class="{{ link.title }}">
                     {{ link.title }}
@@ -19,13 +20,13 @@
             {% endif %}
         {% endfor %}
     </ul>
-    {% if shop.customer_accounts_enabled == true %}
-        <ul>
-            <li><a href="{{ routes.cart_url }}">Cart</a></li>
-            <li><a href="{{ routes.account_login_url }}">Login</a></li>
-            <li><a href="{{ routes.account_register_url }}">Register</a></li>
-        </ul>
     {% endif %}
+    
+    <ul>
+        <li id="cart_item_count" data-cart="{{ cart.item_count }}"><a href="{{ routes.cart_url }}">Cart({{ cart.item_count }})</a></li>
+        <li><a href="{{ routes.account_login_url }}">Login</a></li>
+        <li><a href="{{ routes.account_register_url }}">Register</a></li>
+    </ul>
 </div>
 
 {% schema %}
@@ -33,11 +34,9 @@
         "name": "Header",
         "settings": [
             {
-                "type": "text",
-                "id": "site_logo_title",
-                "label": "Title",
-                "default": "Text",
-                "info": "This is for the site logo text"
+                "type": "image_picker",
+                "id": "site_logo",
+                "label": "Site Logo"
             },
             {
                 "type": "link_list",

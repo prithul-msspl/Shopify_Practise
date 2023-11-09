@@ -1,20 +1,20 @@
 {
     "sections": {
-        "banner-section": {
+        "slider-section": {
             "type": "banner-section"
         },
-        "second-section": {
-            "type": "template-second-section",
-            "blocks": {
-                "section_icon": {
-                    "type": "section_icon"
-                },
-                "section_text": {
-                    "type": "section_text"
-                }
-            },
-            "block_order": ["section_icon", "section_text"]
+        "latest-arrival-section": {
+            "type": "template-latest-arrival"
+        },
+        "about-us-section":{
+            "type": "template-aboutus"
+        },
+        "your-style-section": {
+            "type": "template-your-style"
+        },
+        "get-in-touch-section": {
+            "type": "template-getintouch"
         }
     },
-    "order": ["banner-section", "second-section"]
+    "order": ["slider-section", "latest-arrival-section", "about-us-section", "your-style-section", "get-in-touch-section"]
 }

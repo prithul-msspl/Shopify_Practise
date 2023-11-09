@@ -10,12 +10,14 @@
     {{ content_for_header }}
     <!-- Header hook for plugins -->
     {{ 'application.css' | asset_url | stylesheet_tag }}
-    {{ 'application.js' | asset_url | script_tag }}
+    
   </head>
   <body>
     {% section 'header' %}
     <main role="main">
       {{ content_for_layout }}
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    {{ 'application.js' | asset_url | script_tag }}
   </body>
 </html>

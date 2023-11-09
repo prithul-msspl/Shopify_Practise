@@ -1,0 +1,34 @@
+{% assign section_heading = section.settings.section_heading %}
+{% assign choose_collection = section.settings.choose_collection %}
+<div>
+    {% if section_heading != blank %}
+        {{ section_heading }}
+    {% endif %}
+    {% if choose_collection != blank %}
+        <div>
+            {% for item in choose_collection %}
+                {{ item.image |  img_url: "master" |  img_tag }}
+                {{ item.title |  link_to: item.url }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
+{% schema %}
+{
+    "name": "What's your style section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_heading",
+            "label": "Section Heading"
+        },
+        {
+            "type": "collection_list",
+            "id": "choose_collection",
+            "label": "Choose Collection",
+            "limit": 4
+        }
+    ]
+}
+{% endschema %}

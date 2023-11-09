@@ -1,0 +1,42 @@
+{% assign get_in_touch_image = section.settings.get_in_touch_image %}
+{% assign get_in_touch_heading = section.settings.get_in_touch_heading %}
+{% assign sub_heading = section.settings.sub_heading %}
+{% assign contact_us_button = section.settings.contact_us_button %}
+<div {% if get_in_touch_image != blank %} style="background-image: url('{{ get_in_touch_image | img_url: 'master' }}');" {% endif %}>
+    {% if get_in_touch_heading != blank %}
+        <h2>{{ get_in_touch_heading }}</h2>
+    {% endif %}
+    {% if sub_heading != blank %}
+        {{ sub_heading }}
+    {% endif %}
+    {% if contact_us_button != blank %}
+        <a href="{{ contact_us_button }}">Contact Us</a>
+    {% endif %}
+</div>
+{% schema %}
+{
+    "name": "Get In Touch Section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "get_in_touch_image",
+            "label": "Get in touch Background Image"
+        },
+        {
+            "type": "text",
+            "id": "get_in_touch_heading",
+            "label": "Get in touch heading"
+        },
+        {
+            "type": "text",
+            "id": "sub_heading",
+            "label": "Get in touch Sub heading"
+        },
+        {
+            "type": "url",
+            "id": "contact_us_button",
+            "label": "Contact us button"
+        }
+    ]
+}
+{% endschema %}
