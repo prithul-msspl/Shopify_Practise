@@ -1,20 +1,52 @@
 {
-    "sections": {
-        "slider-section": {
-            "type": "banner-section"
-        },
-        "latest-arrival-section": {
-            "type": "template-latest-arrival"
-        },
-        "about-us-section":{
-            "type": "template-aboutus"
-        },
-        "your-style-section": {
-            "type": "template-your-style"
-        },
-        "get-in-touch-section": {
-            "type": "template-getintouch"
-        }
+  "sections": {
+    "slider-section": {
+      "type": "banner-section",
+      "settings": {
+      }
     },
-    "order": ["slider-section", "latest-arrival-section", "about-us-section", "your-style-section", "get-in-touch-section"]
+    "latest-arrival-section": {
+      "type": "template-latest-arrival",
+      "settings": {
+        "section_heading": "",
+        "all_product_url": "",
+        "product_list": [
+
+        ]
+      }
+    },
+    "about-us-section": {
+      "type": "template-aboutus",
+      "settings": {
+        "heading": "asfdsfsdfdsf",
+        "sub_heading": "sfdsfdsfdsfdsfdsfdfdsf",
+        "section_description": "<p>sdfdsfdsfdsfdsfdsfdsfdsfdsfdf<\/p>",
+        "read_more_url": ""
+      }
+    },
+    "your-style-section": {
+      "type": "template-your-style",
+      "settings": {
+        "section_heading": "",
+        "choose_collection": [
+
+        ]
+      }
+    },
+    "get-in-touch-section": {
+      "type": "template-getintouch",
+      "settings": {
+        "get_in_touch_heading": "",
+        "sub_heading": "",
+        "contact_us_button": ""
+      }
+    }
+  },
+  "order": [
+    "slider-section",
+    "latest-arrival-section",
+    "about-us-section",
+    "your-style-section",
+    "get-in-touch-section"
+  ]
 }
